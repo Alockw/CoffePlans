@@ -34,8 +34,8 @@ int main(){
     itinerarioOslo[3]="Lago Sognsvann";
     for(const auto& par: itinerarioOslo)
     {
-        int orden = par.first();
-        string lugarAVisitar = par.second();
+        int orden = par.first;
+        string lugarAVisitar = par.second;
         cout << "El" << orden << "lugar a visitar es: " << lugarAVisitar << endl;
     }
 
@@ -49,8 +49,8 @@ int main(){
     itinerarioEstocolmo[3]="Porjus";
     for(const auto& par: itinerarioEstocolmo)
     {
-        int orden = par.first();
-        string lugarAVisitar = par.second();
+        int orden = par.first;
+        string lugarAVisitar = par.second;
         cout << "El" << orden << "lugar a visitar es: " << lugarAVisitar << endl;
     }
 
@@ -64,8 +64,8 @@ int main(){
     itinerarioHelsinki[3]="Kumpula Botanic Garden";
     for(const auto& par: itinerarioHelsinki)
     {
-        int orden = par.first();
-        string lugarAVisitar = par.second();
+        int orden = par.first;
+        string lugarAVisitar = par.second;
         cout << "El" << orden << "lugar a visitar es: " << lugarAVisitar << endl;
     }
     
