@@ -61,9 +61,10 @@ class amigo {
 
            // primero buscamos si esta fecha ya existe, para esto creamos un for que recorra todos los destinos de amigo2
            // y luego recorremos las fechas de cada destino comparando si la fecha ya existe con la fecha que queremos agregar
-            for(auto &destino : amigo2.destinos){
+            for(const auto &destino : amigo2.destinos){
                 string clave = destino;
                 string valor = amigo2.fechasXdestino[destino];
+                // passing 'const std::map<std::__cxx11::basic_string<char>, std::__cxx11::basic_string<char> >' as 'this' argument discards qualifiers [-fpermissive]gcc
                 if(valor == fechax){
                     cout << "La fecha ya existe" << endl;
                     return;
