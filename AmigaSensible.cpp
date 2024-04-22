@@ -1,10 +1,57 @@
-// La amiga sensible es aquella amiga que tiene los lugares establecidos que quiere visitar, no hay mucho orden con respecto a las horas pero quiere visitar cada destino que tiene dentro de su lista de planes
 #include <iostream> 
 #include <string> 
 #include <set> 
 #include <map> 
 
 using namespace std; 
+
+
+void menu(){
+    int opcion; 
+    do
+    {
+        cout << " Bienvenido!" ; 
+        cout << "1. Ciudad 1";
+        cout << "2. Ciudad 2";
+        cout << "3. Ciudad 3";
+        cout << "4. Salir";
+        cin >> opcion;
+        switch (opcion)
+        {
+        case 1:
+            itinerarioOslso;
+            break;
+        case 2:
+            itinerarioEstocolmo;
+            break;
+        case 3:
+            itinerarioHelsinki;
+            break;
+        case 4:
+            cout << "Saliendo de la plataforma";
+            break;
+        default:
+            cout << " Ingrese un número válido";
+            break;
+        }
+    } while (opcion != 4);
+    
+}
+// info del destino 
+struct destino {
+    string ciudad; 
+    string pais;
+    set<string> destinos; 
+}
+
+// info del viaje
+struct viaje {
+    string fecha;
+    string transporte;
+    string salida; 
+    float precioTransporte; 
+    map<int, string> dia;
+}
 
 int main(){
 
