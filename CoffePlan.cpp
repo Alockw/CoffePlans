@@ -5,7 +5,6 @@
 #include <string>
 #include <sstream>
 using namespace std;
-
 // Estructura para almacenar información sobre un destino
 struct Destino
 {
