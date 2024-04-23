@@ -17,6 +17,7 @@ void menu(){
         cout << "4. Salir";
         cin >> opcion;
         switch (opcion)
+
         {
         case 1:
             itinerarioOslso;
@@ -37,6 +38,7 @@ void menu(){
     } while (opcion != 4);
     
 }
+
 // info del destino 
 struct destino {
     string ciudad; 
@@ -118,3 +120,10 @@ int main(){
     
     return 0;
 };
+
+/* COMPLEJIDAD:
+    1. Entiende el problema: Se quiere buscar y ordenar los lugares de destino elegidos por el usuario
+    2. Identifica las partes críticas: switch del menú, 4 for consecutivos
+    3. Conteo de operaciones básicas: los () del for
+    Conclusión: este algoritmo tiene una complejidad Omega(Ω)
+*/
