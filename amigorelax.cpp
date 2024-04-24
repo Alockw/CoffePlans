@@ -289,3 +289,49 @@ int main()
     sistema.mostrarMenu();
     return 0;
 }
+/*
+1*el porblema principal es el hacer un sistema para poder planear un plan de viaje 
+ya sea con amigos o familia con destino y que se ajuste a el usuario 
+2*estas son las partes criticas del codigo :
+Planificación de viajes: Esto incluye la función planificarViaje(), donde se solicita información 
+sobre el viaje al usuario y se almacena en la estructura de datos.
+Consulta de destinos de un amigo: Esta funcionalidad está cubierta por la función consultarDestinosAmigo(),
+donde se muestra la información de los destinos de un amigo dado.
+Búsqueda de miembros que tienen planificado visitar un destino específico: Esto se realiza en la función encontrarMiembrosDestino(), donde se busca en los planes
+de viaje de todos los amigos para encontrar quién ha planeado visitar un destino específico.
+Recopilación de planes de viaje: Se realiza en la función recopilarPlanes(), donde se muestran todos los planes de viaje almacenados en el sistema.
+5*Bucle en la función planificarViaje():
+Itera sobre los días del viaje, lo que está determinado por la duración del viaje (denotada como "d").
+por lo tanto, la complejidad de este bucle es O(d), donde "d" es la duración del viaje.
+Bucle en la función consultarDestinosAmigo():
+Itera sobre los viajes de un amigo dado, lo que está relacionado con el número de viajes que tiene ese amigo (denotado como "m")
+por lo tanto, la complejidad de este bucle es O(m), donde "m" es el número de viajes del amigo.
+Bucle en la función encontrarMiembrosDestino():
+Itera sobre todos los amigos y todos sus viajes, lo que está relacionado con el número total de amigos 
+("n") y el número promedio de viajes por amigo ("m") por lo tanto, la complejidad de este bucle es O(n * m), 
+donde "n" es el número de amigos y "m" es el número promedio de viajes por amigo.
+Bucle en la función recopilarPlanes():
+Similar al bucle anterior, itera sobre todos los amigos y todos sus viajes, 
+lo que tiene una complejidad de O(n * m), donde "n" es el número de amigos y "m" es el número promedio de viajes por amigo.
+6*en el codigo no hay funciones reursivas pero si hay funciones que llaman a otras funciones
+comoLa función mostrarMenu() llama a otras funciones dependiendo de la opción seleccionada por el usuario, como agregarDestino(), planificarViaje(), consultarDestinosAmigo(),
+encontrarMiembrosDestino(), agregarAmigo(), recopilarPlanes(), y mostrarRecomendaciones()
+7*algoritmo de búsqueda lineal. Este algoritmo consiste en recorrer secuencialmente una lista de elementos hasta
+encontrar el elemento buscado o llegar al final de la listapor ejemplo, para buscar amigos por su nombre dentro de la lista de amigos
+la complejidad de este algoritmo es lineal O(n), donde "n" es el número total de elementos en la lista
+8*el codigo no entra mucho en conflicto con una catidad de planes no tan amplia pero cuando ya hay demasiados 
+planes creados a la vez que dia se demora mas en analizar y lanzar algunos resultados ejemplo con unos 
+10 planes cada uno con 5 dias se demora un poco pero no demasiado pero si es un plan con mas de 20 dias si se demora un poco mas
+9*se podria tomar como se sabe que es un algotirmo linean entonconces se sabe que entre mas grande 
+sean los planes osaese los dias o entre mas cantidad de amigos sean se necesitara tomar mas recursos del sistema 
+que podrian llevar a un peor funcionamiento de este sistema 
+10* el sistema tiene una complejidad que se podria tomar como omega Ω ya que amenos que sea un plan o 
+muchas personas siempre tendra buen rendimiento y no daria problema de tiempo ni de recursos muy grande haceindo que 
+sea un sistema bien optimizado en lo que se encuentra para su proposito pero con obvias mejoras posoibles para este mismo 
+11*se podria optimizar al usar mapas ordenados en lugar de mapas no ordenados para almacenar
+los destinos y los amigos esto haria mejor los metodos de busqueda y consulta 
+y en la busqueda de amigos por nombre se podria mejorar con un metodo de busqueda binaria
+si la lista de amigos estubiera ordenada por orden alfabetico 
+tambien se podria evitar el salto de linea en algunas entredas del usuario con un cin.ignore 
+para que despues de leer un valor cin no pase eso 
+*/
