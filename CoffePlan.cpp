@@ -4,6 +4,7 @@
 #include <vector>
 #include <string>
 #include <sstream>
+#include <queue>
 using namespace std;
 // Estructura para almacenar información sobre un destino
 struct Destino
@@ -23,6 +24,15 @@ struct Viaje
     Destino destino;
     int duracion;             // Duración del viaje en días
     map<int, string> planDia; // Planes diarios del viaje, donde la clave es el día y el valor es el plan
+};
+// una estructura que represente un plan de viaje
+struct PlanViaje
+{
+    string nombreAmigo;
+    string fecha;
+    string pais;
+    string ciudad;
+    map<int, string> planDia;
 };
 
 // Estructura para almacenar información sobre un amigo
@@ -113,7 +123,7 @@ public:
         cout << "Ingrese la ciudad del destino: ";
         cin >> nuevoViaje.destino.ciudad;
         string lugar;
-        cout<<nuevoViaje.destino.ciudad<<endl;
+        cout << nuevoViaje.destino.ciudad << endl;
         cout << "Ingrese los lugares a visitar (separados por comas): \n";
         getline(cin, lugar);
         stringstream ss(lugar);
@@ -201,6 +211,39 @@ public:
             }
         }
     }
+    //funcion que deberia de tomar todos los planes y mostrarlos por orden de cracion
+    void recopilarPlanesPorOrden()
+    {
+        queue<PlanViaje> colaPlanes;
+
+        for (const auto &amigo : amigos)
+        {
+            for (const auto &viaje : amigo.second.planesViaje)
+            {
+                PlanViaje plan;
+                plan.nombreAmigo = amigo.first;
+                plan.fecha = viaje.second.fecha;
+                plan.pais = viaje.second.destino.pais;
+                plan.ciudad = viaje.second.destino.ciudad;
+                plan.planDia = viaje.second.planDia;
+
+                colaPlanes.push(plan);
+            }
+        }
+
+        // Procesar la cola de planes de viaje
+        while (!colaPlanes.empty())
+        {
+            PlanViaje planActual = colaPlanes.front();
+            cout << "Amigo: " << planActual.nombreAmigo << ", Fecha: " << planActual.fecha << ", Destino: " << planActual.pais << " " << planActual.ciudad << "\n";
+            cout << "Planes diarios:\n";
+            for (const auto &plan : planActual.planDia)
+            {
+                cout << "Día " << plan.first << ": " << plan.second << "\n";
+            }
+            colaPlanes.pop();
+        }
+    }
 
     // Función para mostrar el menú principal y manejar las opciones seleccionadas por el usuario
     void mostrarMenu()
@@ -216,9 +259,10 @@ public:
             cout << "2. Planificar viaje\n";
             cout << "3. Consultar destinos de un amigo\n";
             cout << "4. Encontrar miembros que tienen planificado visitar un destino específico\n";
-            cout << "5. Recopilar planes de viaje\n";
+            cout << "5. Recopilar planes de viaje(sin destinos duplicados)\n";
             cout << "6. Ver recomendaciones\n";
-            cout << "7. Salir\n";
+            cout << "7. Ver planes por orden de creacion\n";
+            cout << "8. Salir\n";
             cout << "//////////////////////////////////////////////////////////////////////////////////////\n";
             cout << "Ingrese su opcion: ";
             cin >> opcion;
@@ -253,12 +297,15 @@ public:
                 mostrarRecomendaciones();
                 break;
             case 7:
+                recopilarPlanesPorOrden();
+                break;
+            case 8:
                 cout << "Saliendo del sistema de viajes.\n";
                 break;
             default:
                 cout << "Opción inválida. Intente de nuevo.\n";
             }
-        } while (opcion != 7);
+        } while (opcion != 8);
     }
 };
 // Función principal para ejecutar el sistema de viajes
