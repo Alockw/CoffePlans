@@ -4,6 +4,7 @@
 #include <vector>
 #include <string>
 #include <sstream>
+#include <queue>
 using namespace std;
 
 // Estructura para almacenar información sobre un destino
@@ -24,6 +25,14 @@ struct Viaje
     Destino destino;
     int duracion;             // Duración del viaje en días
     map<int, string> planDia; // Planes diarios del viaje, donde la clave es el día y el valor es el plan
+};
+//una estructura que represente un plan de viaje
+struct PlanViaje {
+    string nombreAmigo;
+    string fecha;
+    string pais;
+    string ciudad;
+    map<int, string> planDia;
 };
 
 // Estructura para almacenar información sobre un amigo
@@ -222,6 +231,33 @@ public:
             }
         }
     }
+    void recopilarPlanesPorOrden() {
+    queue<PlanViaje> colaPlanes;
+
+    for (const auto &amigo : amigos) {
+        for (const auto &viaje : amigo.second.planesViaje) {
+            PlanViaje plan;
+            plan.nombreAmigo = amigo.first;
+            plan.fecha = viaje.second.fecha;
+            plan.pais = viaje.second.destino.pais;
+            plan.ciudad = viaje.second.destino.ciudad;
+            plan.planDia = viaje.second.planDia;
+
+            colaPlanes.push(plan);
+        }
+    }
+
+    // Procesar la cola de planes de viaje
+    while (!colaPlanes.empty()) {
+        PlanViaje planActual = colaPlanes.front();
+        cout << "Amigo: " << planActual.nombreAmigo << ", Fecha: " << planActual.fecha << ", Destino: " << planActual.pais << " " << planActual.ciudad << "\n";
+        cout << "Planes diarios:\n";
+        for (const auto &plan : planActual.planDia) {
+            cout << "Día " << plan.first << ": " << plan.second << "\n";
+        }
+        colaPlanes.pop();
+    }
+}
 
     // Función para mostrar el menú principal y manejar las opciones seleccionadas por el usuario
     void mostrarMenu()
@@ -237,7 +273,8 @@ public:
             cout << "5. Agregar amigo\n";
             cout << "6. Recopilar planes de viaje\n";
             cout << "7. Ver recomendaciones\n";
-            cout << "8. Salir\n";
+            cout << "8. Ver planes por orden de creados\n";
+            cout << "9. Salir\n";
             cout << "Ingrese su opción: ";
             cin >> opcion;
             switch (opcion)
@@ -274,12 +311,15 @@ public:
                 mostrarRecomendaciones();
                 break;
             case 8:
+                mostrarRecomendaciones();
+                break;
+            case 9:
                 cout << "Saliendo del sistema de viajes.\n";
                 break;
             default:
                 cout << "Opción inválida. Intente de nuevo.\n";
             }
-        } while (opcion != 8);
+        } while (opcion != 9);
     }
 };
 // Función principal para ejecutar el sistema de viajes
