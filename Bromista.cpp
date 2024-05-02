@@ -7,6 +7,7 @@
 using namespace std;
 
 int main(){
+
     // Declaración de variables para almacenar información del usuario
     string nombre, fecha;
 
@@ -79,8 +80,8 @@ int main(){
     }
     
     return 0;
-}
 
+}
 // Función no utilizada en el código principal
 void AgregarDestinoALista(){
     list<string> listaFamiliar = {};
@@ -91,5 +92,31 @@ void AgregarDestinoALista(){
     
     listaFamiliar.push_back(desicionViaje);
 
-    cout << listaFamiliar << endl;
+    for(const auto& item : listaFamiliar){
+        cout << item << " ";
+
 }
+}
+
+
+/* Análisis de Complejidad
+
+Tiempo de Ejecución : La mayor parte del tiempo de ejecución se consume en las operaciones 
+de inserción e iteración sobre los conjuntos y mapas. Dado que estas operaciones tienen 
+complejidades logarítmicas y lineales, el tiempo total de ejecución será dominado por la 
+operación de iteración, que es lineal O(n), donde n es el número total de elementos en 
+todos los conjuntos y mapas combinados.
+
+Espacio de Memoria : El espacio de memoria requerido aumenta con el número de elementos 
+almacenados en los conjuntos y mapas. La complejidad espacial es directamente proporcional
+al número de elementos almacenados, es decir, O(n), donde n es el número total de 
+elementos en todos los conjuntos y mapas.
+
+
+El código tiene una complejidad de tiempo principalmente lineal O(n) debido a las 
+operaciones de iteración sobre los conjuntos y mapas, y una espacial de O(n) debido 
+al almacenamiento de elementos en estos contenedores. Es importante notar que estas 
+complejidades asumen que el número de elementos en los conjuntos y mapas es significativo. 
+Para conjuntos y mapas pequeños, las complejidades logarítmicas de las operaciones 
+de inserción pueden ser menos relevantes en comparación con la complejidad lineal de las 
+operaciones de iteración. */
