@@ -8,6 +8,8 @@ using namespace std;
 
 int main(){
 
+    SaberMas();
+
     // Declaración de variables para almacenar información del usuario
     string nombre, fecha;
 
@@ -94,12 +96,51 @@ void AgregarDestinoALista(){
 
     for(const auto& item : listaFamiliar){
         cout << item << " ";
+    }
+}
+int desicionUsuario;
+void SaberMas(){
+cout << "Si desea conocer los detalles del viaje a Santa Marta, digite 1\n" << endl; 
+cout << "Si desea conocer los detalles del viaje a Cali, digite 2\n" << endl;
+cout << "Si desea conocer los detalles del viaje a San Andres, digite 3\n" << endl;
+cout << "Si desea salir, digite 4\n" << endl;
+cin >> desicionUsuario;
 
+
+if(desicionUsuario == 1){
+    cout << "Plan Santa Marta:" << endl;
+    cout << "Hora de salida: 9:00 am" << endl;
+    cout << "fecha: 2024-06-27";
+    cout << "Tipo de transporte: Avión Avianca" << endl;
+    cout << "500.0" << endl;
+    cout << "Planes: Caminata de 7 horas en taganga, playa Buritaca y el acuario Rodadero." << endl;
+}
+if(desicionUsuario == 2){
+    cout << "Plan Cali:" << endl;
+    cout << "Hora de salida: 10:00 am" << endl;
+    cout << "fecha: 2024-05-13";
+    cout << "Tipo de transporte: Avión Avianca" << endl;
+    cout << "300.0" << endl;
+    cout << "Planes: Visitar el museo la Tertulia, Bahia Magdalena y Parque Nacional Natural Puracé. " << endl;
+
+}
+if(desicionUsuario == 3){
+    cout << "Plan San Andres:" << endl;
+    cout << "Hora de salida: 5:00 am" << endl;
+    cout << "fecha: 2025-01-04";
+    cout << "Tipo de transporte: Avión Kayak" << endl;
+    cout << "700.0" << endl;
+    cout << "Planes: Playa Spratt Bight, Practica snorkel o careteo, El Hoyo Soplador." << endl;
+
+}
+
+if(desicionUsuario == 4){
+    cout << "Saliendo de la pagina..." << endl;
 }
 }
 
 
-/* Análisis de Complejidad
+/* Complejidad
 
 Tiempo de Ejecución : La mayor parte del tiempo de ejecución se consume en las operaciones 
 de inserción e iteración sobre los conjuntos y mapas. Dado que estas operaciones tienen 
