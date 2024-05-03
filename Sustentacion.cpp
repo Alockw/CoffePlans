@@ -10,10 +10,14 @@ struct miembroDeLaFamilia {
     string nombre;
     int viajesPlanificados;
 
+    // Constructor predeterminado para la función que se usará mas adelante
+    miembroDeLaFamilia() : nombre(""), viajesPlanificados(0) {}
+
+    // Constructor con los parámetros establecidos para desarrollar el porograma 
     miembroDeLaFamilia(string nombre, int viajesPlanificados) : nombre(nombre), viajesPlanificados(viajesPlanificados) {}
 };
 
-// función para ordenar los miembors de la familia de mayor a menor viajes planificados 
+// función para ordenar los miembros de la familia de mayor a menor viajes planificados (se utilizan ordenamientos para organizar los miembors de la familia)
 void ordenarFamiliares(map<string, miembroDeLaFamilia>& miembros) {
     bool cambio = true;
     while (cambio) {
@@ -27,7 +31,6 @@ void ordenarFamiliares(map<string, miembroDeLaFamilia>& miembros) {
     }
 }
 
-
 int main() {
     // mapa para crear los miembros de la familia 
     map<string, miembroDeLaFamilia> miembros;
@@ -40,19 +43,11 @@ int main() {
 
     ordenarFamiliares(miembros);
 
-    // función para encontrar el miebmro de la familia que tenga mas viajes planificados 
-    string miembroConMasViajesPlanificados;
-    int maximoDeViajes = 0;
-    for (const auto& par : miembros) {
-        if (par.second.viajesPlanificados > maximoDeViajes) {
-            miembroConMasViajesPlanificados = par.first;
-            maximoDeViajes = par.second.viajesPlanificados;
-        }
-    }
-    cout << "Los familiares ordenados de mayor a menor segun los viajes que tienen planificados son: \n" << endl; 
+    // función para encontrar el miembro de la familia que tenga más viajes planificados 
+    cout << "Los familiares ordenados de mayor a menor según los viajes que tienen planificados son:\n" << endl; 
     for(const auto& par : miembros){
-        cout << par.second.miembros << " Con un total de: \n" << par.second.viaijesPlanificados << " viajes." << endl;
+        cout << par.second.nombre << " con un total de:\n" << par.second.viajesPlanificados << " viajes." << endl;
     }
 
     return 0;
-};
+}
